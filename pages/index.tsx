@@ -21,7 +21,7 @@ const Home: NextPage<Props> = ({ tweets }) => {
 			<main className="grid grid-cols-9">
 				<Sidebar />
 
-				<Feed />
+				<Feed tweets={tweets} />
 
 				<Widgets />
 			</main>
