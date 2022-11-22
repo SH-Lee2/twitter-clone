@@ -5,10 +5,17 @@ import {
 	MapPinIcon,
 	PhotoIcon,
 } from "@heroicons/react/24/outline";
-import React, { useRef, useState } from "react";
+import React, { Dispatch, useRef, useState } from "react";
 import { useSession } from "next-auth/react";
+import { Tweet, TweetBody } from "../typings";
+import { fetchTweets } from "../utils/fetchTweets";
+import toast from "react-hot-toast";
 
-const TweetBox = () => {
+interface Props {
+	setTweets: Dispatch<React.SetStateAction<Tweet[]>>;
+}
+
+const TweetBox = ({ setTweets }: Props) => {
 	const { data: session } = useSession();
 	const [input, setInput] = useState<string>("");
 	const [imageUrlBoxIsOpen, setImageUrlBoxIsOpen] = useState<boolean>(false);
@@ -23,6 +30,39 @@ const TweetBox = () => {
 
 		setImage(imageInputRef.current.value);
 		imageInputRef.current.value = "";
+		setImageUrlBoxIsOpen(false);
+	};
+
+	const postTweet = async () => {
+		const tweetInfo: TweetBody = {
+			text: input,
+			username: session?.user?.name || "Unknown User",
+			profileImage: session?.user?.image || "https://links.papareact.com/gll",
+			tweetImage: image,
+		};
+
+		const result = await fetch(`/api/addTweet`, {
+			body: JSON.stringify(tweetInfo),
+			method: "POST",
+		});
+
+		const json = await result.json();
+		const newTweets = await fetchTweets();
+		setTweets(newTweets);
+
+		toast(json.message, {
+			icon: "🚀",
+		});
+
+		return json;
+	};
+
+	const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+		e.preventDefault();
+		postTweet();
+
+		setInput("");
+		setImage("");
 		setImageUrlBoxIsOpen(false);
 	};
 
@@ -54,6 +94,7 @@ const TweetBox = () => {
 							<MapPinIcon className="h-5 w-5" />
 						</div>
 						<button
+							onClick={handleSubmit}
 							disabled={!input || !session}
 							className="bg-twitter px-5 py-2 font-bold text-bold text-white rounded-full disabled:opacity-40"
 						>
