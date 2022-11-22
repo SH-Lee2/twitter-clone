@@ -17,7 +17,7 @@ export default async function handler(
 				create: {
 					_type: "tweet",
 					text: data.text,
-					usename: data.username,
+					username: data.username,
 					blockTweet: false,
 					profileImage: data.profileImage,
 					tweetImage: data.tweetImage,
