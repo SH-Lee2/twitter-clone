@@ -1,27 +1,47 @@
-# Next.js + Tailwind CSS Example
+# Twitter clone
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.2)](https://tailwindcss.com/blog/tailwindcss-v3-2) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+## Table of contents
 
-## Deploy your own
+- [Overview](#overview)
+  - [기능](#기능)
+  - [스크린샷](#스크린샷)
+  - [라이브 링크](#라이브-링크)
+- [My process](#my-process)
+  - [사용 패키지](#사용-패키지)
+  - [추가 개발 사항](#추가-개발-사항)
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or preview live with [StackBlitz](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
+## Overview
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
+### 기능
 
-## How to use
+- 게시물 등록
+- 댓글 등록 
+- 트위터 타임라인
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
+### 스크린샷
 
-```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
-```
 
-```bash
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
-```
+### 라이브 링크
 
-```bash
-pnpm create next-app --example with-tailwindcss with-tailwindcss-app
-```
+- Live Site URL: https://twitter-clone-plum-gamma.vercel.app/
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+## My process
+
+### 사용 패키지
+
+- next
+- react
+- sanity CMS
+- typescript
+- tailwindcss
+- next-auth
+- next-sanity
+
+### 추가 개발 사항
+
+- [ ] 게시물 스타일 변경 (아이콘 호버시 스타일)
+- [ ] 게시물 삭제 및 수정 추가 
+- [ ] 게시물 등록시 사진 여러개 추가 및 UI 변경 
+- [ ] 사용자 페이지 추가 
+- [ ] 검색 기능 추가
+
