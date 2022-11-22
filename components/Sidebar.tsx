@@ -1,5 +1,5 @@
 import React from "react";
-
+import { useSession, signIn, signOut } from "next-auth/react";
 import {
 	BellIcon,
 	HashtagIcon,
@@ -11,6 +11,7 @@ import {
 import SidebarRow from "./SidebarRow";
 
 const Sidebar = () => {
+	const { data: session } = useSession();
 	return (
 		<div className="flex flex-col col-span-2 items-center px-4 md:items-start">
 			<img
@@ -23,7 +24,11 @@ const Sidebar = () => {
 			<SidebarRow Icon={BellIcon} title="Notifications" />
 			<SidebarRow Icon={EnvelopeIcon} title="Messages" />
 			<SidebarRow Icon={BookmarkIcon} title="Bookmarks" />
-			<SidebarRow Icon={UserIcon} title="Sign In" />
+			<SidebarRow
+				onClick={session ? signOut : signIn}
+				Icon={UserIcon}
+				title={session ? "Sign out" : "Sign In"}
+			/>
 		</div>
 	);
 };
